@@ -1,19 +1,5 @@
-import { ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native'
-import Title from './src/components/Title'
+import Navigation from "./src/navigation/Navigation";
 
-export default function App () {
-  return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <StatusBar backgroundColor='#fff' barStyle='dark-content' />
-      <Title />
-    </ScrollView>
-  )
+export default function App() {
+  return <Navigation />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    paddingHorizontal: 20
-  }
-})
