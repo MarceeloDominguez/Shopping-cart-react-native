@@ -15,6 +15,9 @@ export default function ListProducts({ selectedIndex }) {
       renderItem={({ item }) => <RenderProducts products={item} />}
       numColumns={2}
       showsVerticalScrollIndicator={false}
+      contentContainerStyle={{
+        alignSelf: "center",
+      }}
     />
   );
 }

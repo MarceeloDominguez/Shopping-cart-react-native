@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import {
   View,
@@ -11,10 +12,15 @@ import {
 const windowWidth = Dimensions.get("window").width;
 
 export default function RenderProducts({ products }) {
+  const navigation = useNavigation();
   const { name, image, price } = products;
 
   return (
-    <TouchableOpacity style={styles.container} activeOpacity={0.8}>
+    <TouchableOpacity
+      style={styles.container}
+      activeOpacity={0.8}
+      onPress={() => navigation.navigate("Details", products)}
+    >
       <Text style={styles.title} numberOfLines={2}>
         {name}
       </Text>
@@ -47,7 +53,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingTop: 5,
     maxWidth: 140,
-    color: "#0d0d0d",
+    color: "#1A120B",
   },
   containerImage: {
     justifyContent: "center",
@@ -55,7 +61,7 @@ const styles = StyleSheet.create({
     width: windowWidth * 0.4,
   },
   imageProduct: {
-    width: 150,
+    width: 140,
     height: 150,
   },
   price: {
@@ -64,5 +70,6 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     paddingLeft: 10,
     paddingBottom: 5,
+    color: "#1A120B",
   },
 });

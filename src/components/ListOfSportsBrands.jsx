@@ -24,7 +24,7 @@ export default function ListOfSportsBrands({
             source={{ uri: item }}
             style={[
               {
-                borderColor: selectedIndex === index ? "#0d0d0d" : "#ccc",
+                borderColor: selectedIndex === index ? "#FF5B00" : "#ccc",
                 opacity: selectedIndex === index ? 1 : 0.7,
               },
               styles.image,

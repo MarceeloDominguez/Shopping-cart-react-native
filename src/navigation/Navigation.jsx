@@ -13,10 +13,17 @@ export default function Navigation() {
     <NavigationContainer>
       <StatusBar backgroundColor="#fff" barStyle="dark-content" />
       <Stack.Navigator
-        screenOptions={{ headerTransparent: true, headerTitle: "" }}
+        screenOptions={{
+          headerTransparent: true,
+          headerTitle: "",
+        }}
       >
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Details" component={Details} />
+        <Stack.Screen
+          name="Details"
+          component={Details}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name="ProductsCart" component={ProductsCart} />
       </Stack.Navigator>
     </NavigationContainer>
