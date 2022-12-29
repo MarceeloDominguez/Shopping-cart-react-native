@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import ListOfSportsBrands from "../components/ListOfSportsBrands";
 import ListProducts from "../components/ListProducts";
-import Title from "../components/Title";
+import Header from "../components/Header";
 
 export default function Home() {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
     <View style={styles.container}>
-      <Title />
+      <Header />
       <ListOfSportsBrands
         setSelectedIndex={setSelectedIndex}
         selectedIndex={selectedIndex}

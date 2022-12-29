@@ -10,6 +10,7 @@ const Products = [
       "https://http2.mlstatic.com/D_NQ_NP_797470-MLA50731501414_072022-O.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_942214-MLA50731501413_072022-F.webp",
     ],
+    id: 1,
   },
   {
     name: "Zapatillas Fortarun Lace Running - Azul adidas",
@@ -22,28 +23,47 @@ const Products = [
       "https://http2.mlstatic.com/D_NQ_NP_692118-MLA48258348455_112021-O.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_863077-MLA48258348460_112021-F.webp",
     ],
+    id: 2,
   },
-  //   {
-  //     name: "Zapatillas Advantage adidas Court Lifestyle Gy7046 adidas",
-  //     image:
-  //       "https://http2.mlstatic.com/D_NQ_NP_894821-MLA53044648502_122022-O.webp",
-  //     price: "20999",
-  //     categoryIndex: 0,
-  //   },
-  //   {
-  //     name: "Zapatillas De Senderismo Terrex Hyperhiker - Beige adidas",
-  //     image:
-  //       "https://http2.mlstatic.com/D_NQ_NP_659567-MLA49379837128_032022-O.webp",
-  //     price: "17400",
-  //     categoryIndex: 0,
-  //   },
-  //   {
-  //     name: "Zapatillas Grand Court (unisex) - Infantil - Blanco adidas",
-  //     image:
-  //       "https://http2.mlstatic.com/D_NQ_NP_894890-MLA50091200519_052022-O.webp",
-  //     price: "14999",
-  //     categoryIndex: 0,
-  //   },
+  {
+    name: "Zapatillas Advantage adidas Court Lifestyle Gy7046 adidas",
+    image:
+      "https://http2.mlstatic.com/D_NQ_NP_894821-MLA53044648502_122022-O.webp",
+    price: "16999",
+    categoryIndex: 0,
+    thumbnails: [
+      "https://http2.mlstatic.com/D_NQ_NP_894821-MLA53044648502_122022-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_649271-MLA53044648504_122022-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_903765-MLA53044648499_122022-O.webp",
+    ],
+    id: 3,
+  },
+  {
+    name: "Zapatillas De Senderismo Terrex Hyperhiker - Beige adidas",
+    image:
+      "https://http2.mlstatic.com/D_NQ_NP_659567-MLA49379837128_032022-O.webp",
+    price: "17999",
+    categoryIndex: 0,
+    thumbnails: [
+      "https://http2.mlstatic.com/D_NQ_NP_659567-MLA49379837128_032022-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_814901-MLA49379837124_032022-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_927478-MLA49379837130_032022-O.webp",
+    ],
+    id: 4,
+  },
+  {
+    name: "Zapatillas Grand Court (unisex) - Infantil - Blanco adidas",
+    image:
+      "https://http2.mlstatic.com/D_NQ_NP_894890-MLA50091200519_052022-O.webp",
+    price: "14999",
+    categoryIndex: 0,
+    thumbnails: [
+      "https://http2.mlstatic.com/D_NQ_NP_894890-MLA50091200519_052022-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_689014-MLA50091200517_052022-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_711519-MLA50091200514_052022-O.webp",
+    ],
+    id: 5,
+  },
   //   {
   //     name: "Zapatillas Nike Revolution 6 De Hombre",
   //     image:

@@ -15,6 +15,7 @@ export default function ProductInformation({ name }) {
         <Text style={styles.reviews}>5.0 (1520 reviews)</Text>
       </View>
       <View>
+        <Text style={styles.titleDescription}>Product Description</Text>
         <Text numberOfLines={3} style={styles.descriptionProduct}>
           There are many variations of passages of Lorem Ipsum available, but
           the majority have suffered alteration in some form, by injected
@@ -27,7 +28,7 @@ export default function ProductInformation({ name }) {
 
 const styles = StyleSheet.create({
   nameProduct: {
-    fontSize: 18,
+    fontSize: 20,
     left: 20,
     marginTop: 20,
     fontWeight: "bold",
@@ -54,9 +55,16 @@ const styles = StyleSheet.create({
     color: "#1A120B",
     textTransform: "capitalize",
   },
+  titleDescription: {
+    left: 20,
+    marginTop: 20,
+    fontSize: 18,
+    fontWeight: "700",
+    letterSpacing: 0.5,
+  },
   descriptionProduct: {
     left: 20,
-    marginTop: 10,
+    marginTop: 5,
     fontSize: 14,
     maxWidth: windowWidth - 40,
     letterSpacing: 0.6,

@@ -12,12 +12,14 @@ import ThumbnailsPhoto from "../components/ThumbnailsPhoto";
 import ProductInformation from "../components/ProductInformation";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
+import { useAppContext } from "../context/GlobalState";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 export default function Details({ route }) {
-  const { name, price, thumbnails } = route.params;
+  const { addToCart, numberOfItemsInCart } = useAppContext();
+  const { name, price, thumbnails, id } = route.params;
   const [selectImage, setSelectImage] = useState(thumbnails[0]);
   const navigation = useNavigation();
 
@@ -38,14 +40,14 @@ export default function Details({ route }) {
               onPress={() => navigation.navigate("Home")}
             />
           </View>
-          <View style={styles.iconCart}>
-            <Ionicons
-              name="cart-outline"
-              size={28}
-              color="#1A120B"
-              onPress={() => navigation.navigate("ProductsCart")}
-            />
-          </View>
+          <TouchableOpacity
+            style={styles.iconCart}
+            onPress={() => navigation.navigate("ProductsCart")}
+            activeOpacity={1}
+          >
+            <Ionicons name="cart-outline" size={28} color="#1A120B" />
+            <Text style={styles.numberItemsCart}>{numberOfItemsInCart}</Text>
+          </TouchableOpacity>
           <View style={styles.iconShare}>
             <Ionicons name="share-social-outline" size={28} color="#1A120B" />
           </View>
@@ -61,7 +63,11 @@ export default function Details({ route }) {
         <Text style={styles.priceProduct}>
           ${price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
         </Text>
-        <TouchableOpacity style={styles.buttonAddCart} activeOpacity={0.6}>
+        <TouchableOpacity
+          style={styles.buttonAddCart}
+          activeOpacity={0.6}
+          onPress={() => addToCart(id)}
+        >
           <Text style={styles.textButtonAddCart}>Add to cart</Text>
         </TouchableOpacity>
       </View>
@@ -88,6 +94,19 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 20,
     right: 18,
+  },
+  numberItemsCart: {
+    position: "absolute",
+    right: -4,
+    top: -7,
+    backgroundColor: "#FF5B00",
+    height: 18,
+    width: 18,
+    color: "#fff",
+    fontWeight: "bold",
+    textAlign: "center",
+    borderRadius: 100,
+    fontSize: 13,
   },
   iconShare: {
     position: "absolute",

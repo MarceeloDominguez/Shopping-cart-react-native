@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
   return (
-    <NavigationContainer>
+    <>
       <StatusBar backgroundColor="#fff" barStyle="dark-content" />
       <Stack.Navigator
         screenOptions={{
@@ -18,14 +18,22 @@ export default function Navigation() {
           headerTitle: "",
         }}
       >
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Details"
           component={Details}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="ProductsCart" component={ProductsCart} />
+        <Stack.Screen
+          name="ProductsCart"
+          component={ProductsCart}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
-    </NavigationContainer>
+    </>
   );
 }
