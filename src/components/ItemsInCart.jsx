@@ -8,13 +8,19 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useAppContext } from "../context/GlobalState";
 
 const windowWidth = Dimensions.get("window").width;
 
-export default function ItemsInCart({ image, name, price, quantity }) {
+export default function ItemsInCart({ image, name, price, quantity, id }) {
+  const { deleteFromCart, addToCart } = useAppContext();
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.conteinerIconDelete}>
+      <TouchableOpacity
+        style={styles.conteinerIconDelete}
+        onPress={() => deleteFromCart(id, true)}
+      >
         <Ionicons
           name="add-outline"
           size={28}
@@ -37,11 +43,11 @@ export default function ItemsInCart({ image, name, price, quantity }) {
             {price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") * quantity}
           </Text>
           <View style={styles.circleQuantity}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => deleteFromCart(id)}>
               <Text style={styles.signoQuantity}>-</Text>
             </TouchableOpacity>
             <Text>{quantity}</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => addToCart(id)}>
               <Text style={styles.signoQuantity}>+</Text>
             </TouchableOpacity>
           </View>

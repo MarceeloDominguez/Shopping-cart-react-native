@@ -1,11 +1,9 @@
 import { createContext, useContext, useReducer } from "react";
-import Products from "../data/data";
-import { shoppingCartReducer } from "../reducer/shoppingCartReducer";
-
-const initialState = {
-  Products,
-  cart: [],
-};
+import { TYPES } from "../actions/cartActions";
+import {
+  initialState,
+  shoppingCartReducer,
+} from "../reducer/shoppingCartReducer";
 
 const AppContext = createContext();
 
@@ -17,11 +15,31 @@ export const GlobalState = ({ children }) => {
   }, 0);
 
   const addToCart = (id) => {
-    dispatch({ type: "add_to_cart", payload: id });
+    dispatch({ type: TYPES.ADD_TO_CART, payload: id });
+  };
+
+  const deleteFromCart = (id, all = false) => {
+    if (all) {
+      dispatch({ type: TYPES.REMOVE_ALL_FROM_CART, payload: id });
+    } else {
+      dispatch({ type: TYPES.REMOVE_ONE_FROM_CART, payload: id });
+    }
+  };
+
+  const clearCart = () => {
+    dispatch({ type: TYPES.CLEAR_CART });
   };
 
   return (
-    <AppContext.Provider value={{ addToCart, cart, numberOfItemsInCart }}>
+    <AppContext.Provider
+      value={{
+        addToCart,
+        deleteFromCart,
+        clearCart,
+        cart,
+        numberOfItemsInCart,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
