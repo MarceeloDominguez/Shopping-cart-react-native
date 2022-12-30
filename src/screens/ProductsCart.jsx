@@ -1,27 +1,32 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView, Button } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import ItemsInCart from "../components/ItemsInCart";
 import { useAppContext } from "../context/GlobalState";
+import HeaderCart from "../components/HeaderCart";
+import ToPay from "../components/ToPay";
 
 export default function ProductsCart() {
-  const { cart, clearCart } = useAppContext();
+  const { cart } = useAppContext();
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <Button title="Eliminar todo" onPress={() => clearCart()} />
-      {cart.length === 0 && (
-        <View style={styles.wrapperTextEmptyCart}>
-          <Text style={styles.textEmptyCart} numberOfLines={1}>
-            There are no products in the cart...
-          </Text>
+    <>
+      <HeaderCart />
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+        {cart.length === 0 && (
+          <View style={styles.wrapperTextEmptyCart}>
+            <Text style={styles.textEmptyCart} numberOfLines={1}>
+              There are no products in the cart...
+            </Text>
+          </View>
+        )}
+        <View style={{ paddingTop: 14 }}>
+          {cart.map((item, index) => (
+            <ItemsInCart {...item} key={index} />
+          ))}
         </View>
-      )}
-      <View style={{ marginTop: 10 }}>
-        {cart.map((item, index) => (
-          <ItemsInCart {...item} key={index} />
-        ))}
-      </View>
-    </ScrollView>
+      </ScrollView>
+      {cart.length !== 0 && <ToPay />}
+    </>
   );
 }
 

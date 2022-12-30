@@ -10,8 +10,12 @@ const AppContext = createContext();
 export const GlobalState = ({ children }) => {
   const [{ cart }, dispatch] = useReducer(shoppingCartReducer, initialState);
 
-  const numberOfItemsInCart = cart.reduce((acc, item) => {
+  const numberOfItemsInCart = cart?.reduce((acc, item) => {
     return acc + item.quantity;
+  }, 0);
+
+  const priceTotal = cart?.reduce((acc, item) => {
+    return acc + item.quantity * item.price;
   }, 0);
 
   const addToCart = (id) => {
@@ -38,6 +42,7 @@ export const GlobalState = ({ children }) => {
         clearCart,
         cart,
         numberOfItemsInCart,
+        priceTotal,
       }}
     >
       {children}

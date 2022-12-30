@@ -14,6 +14,7 @@ const windowWidth = Dimensions.get("window").width;
 
 export default function ItemsInCart({ image, name, price, quantity, id }) {
   const { deleteFromCart, addToCart } = useAppContext();
+  const priceFinal = price * quantity;
 
   return (
     <View style={styles.container}>
@@ -39,8 +40,7 @@ export default function ItemsInCart({ image, name, price, quantity, id }) {
         </Text>
         <View style={styles.wrapperPriceQuantity}>
           <Text style={styles.price}>
-            $
-            {price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") * quantity}
+            ${priceFinal?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
           </Text>
           <View style={styles.circleQuantity}>
             <TouchableOpacity onPress={() => deleteFromCart(id)}>

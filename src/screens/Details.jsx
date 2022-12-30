@@ -18,10 +18,12 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 export default function Details({ route }) {
-  const { addToCart, numberOfItemsInCart } = useAppContext();
+  const { addToCart, numberOfItemsInCart, cart } = useAppContext();
   const { name, price, thumbnails, id } = route.params;
   const [selectImage, setSelectImage] = useState(thumbnails[0]);
   const navigation = useNavigation();
+
+  const productInCart = cart.find((item) => item.id === id);
 
   return (
     <>
@@ -64,11 +66,17 @@ export default function Details({ route }) {
           ${price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
         </Text>
         <TouchableOpacity
-          style={styles.buttonAddCart}
+          style={[
+            styles.buttonAddCart,
+            { opacity: productInCart?.id ? 0.5 : 1 },
+          ]}
           activeOpacity={0.6}
           onPress={() => addToCart(id)}
+          disabled={productInCart?.id ? true : false}
         >
-          <Text style={styles.textButtonAddCart}>Add to cart</Text>
+          <Text style={styles.textButtonAddCart}>
+            {productInCart?.id ? "Product In Cart" : "Add to cart"}
+          </Text>
         </TouchableOpacity>
       </View>
     </>
@@ -139,13 +147,13 @@ const styles = StyleSheet.create({
   buttonAddCart: {
     backgroundColor: "#FF5B00",
     paddingHorizontal: 40,
-    paddingVertical: 8,
-    borderRadius: 100,
+    paddingVertical: 10,
+    borderRadius: 10,
   },
   textButtonAddCart: {
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: "700",
-    letterSpacing: 0.5,
+    letterSpacing: 0.4,
     color: "#F8EDE3",
   },
 });
